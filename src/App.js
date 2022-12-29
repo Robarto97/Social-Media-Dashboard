@@ -1,7 +1,13 @@
-import './styles.scss'
+import Header from "./Header";
+import Main from "./Main";
+import "./styles.scss";
+
 function App() {
   return (
-    <main></main>
+    <>
+      <Header />
+      <Main />
+    </>
   );
 }
 

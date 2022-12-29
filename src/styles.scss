@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 $limeGreen: hsl(163, 72%, 41%);
 $brightRed: hsl(356, 69%, 56%);
-
 $facebookColor: hsl(208, 92%, 53%);
 $twitterColor: hsl(203, 89%, 53%);
 $instagramColor: hsl(37, 97%, 70%), hsl(329, 70%, 58%);
@@ -9,14 +8,333 @@ $youtubeColor: hsl(348, 97%, 39%);
 $toggleDarkColor: hsl(210, 78%, 56%), hsl(146, 68%, 55%);
 $toggleLightColor: hsl(230, 22%, 74%);
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// Light Theme Colors
+$bgWhite: hsl(0, 0%, 100%);
+$headerColor: hsl(225, 100%, 98%);
+$cardBG: hsl(227, 47%, 96%);
+$textColorGrayBlue: hsl(228, 12%, 44%);
+$textColorDarkBlue: hsl(230, 17%, 14%);
+
+// Dark Theme Colors
+$bgDark: hsl(230, 17%, 14%);
+$headerColorDark: hsl(232, 19%, 15%);
+$cardBGDark: hsl(228, 28%, 20%);
+$textColorDesatBlue: hsl(228, 34%, 66%);
+$textColorWhite: hsl(0, 0%, 100%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-size: 14px;
-  background-color: $toggleLightColor;
-  font-family: 'Inter', sans-serif;
+  background-color: $bgWhite;
+  font-family: "Inter", sans-serif;
+  header {
+    background-color: $headerColor;
+    padding: 2.5em 1.75em 6em;
+    border-bottom-left-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    .title {
+      border-bottom: 1px solid $textColorGrayBlue;
+      padding-bottom: 1.5em;
+      h1 {
+        font-size: 1.75em;
+        line-height: 1.5;
+      }
+      p {
+        color: $textColorGrayBlue;
+        font-weight: 700;
+      }
+    }
+    .input {
+      padding-top: 1.5em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      label {
+        font-weight: 700;
+        color: $textColorGrayBlue;
+      }
+      #checkbox {
+        appearance: none;
+        width: 55px;
+        height: 26px;
+        border-radius: 2em;
+        position: relative;
+        background: linear-gradient(to right, $toggleDarkColor);
+      }
+      #checkbox::after {
+        content: "";
+        background-color: $bgDark;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: transform 0.5s ease, background 0.5s ease;
+      }
+      #checkbox:checked {
+        background: $toggleLightColor;
+      }
+      #checkbox:checked::after {
+        transform: translateX(29px);
+        background-color: $bgWhite;
+      }
+    }
+  }
+  main {
+    padding: 1.75em;
+    .stats {
+      margin-top: -5em;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75em;
+      .card {
+        background-color: $cardBG;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5em;
+        border-radius: 0.5em;
+        position: relative;
+        overflow: hidden;
+        .top-row {
+          display: flex;
+          align-items: center;
+          gap: 0.75em;
+          margin-bottom: 2em;
+          span {
+            color: $textColorGrayBlue;
+            font-weight: 700;
+          }
+        }
+        > span {
+          color: $textColorDarkBlue;
+          font-weight: 700;
+          font-size: 4em;
+          line-height: 1;
+        }
+        > p {
+          color: $textColorGrayBlue;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          font-size: 1em;
+          margin-top: 0.5em;
+        }
+        .bottom-row {
+          margin-top: 2em;
+          display: flex;
+          align-items: center;
+          gap: 0.25em;
+          font-weight: 700;
+        }
+        .bottom-row.up {
+          color: $limeGreen;
+        }
+        .bottom-row.down {
+          color: $brightRed;
+        }
+      }
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 4px;
+      }
+      .card.facebook::after {
+        background: $facebookColor;
+      }
+      .card.twitter::after {
+        background: $twitterColor;
+      }
+      .card.instagram::after {
+        background: linear-gradient(to right, $instagramColor);
+      }
+      .card.youtube::after {
+        background: $youtubeColor;
+      }
+    }
+    .overview {
+      margin-top: 3.5em;
+      padding-bottom: 2em;
+      h2 {
+        color: $textColorGrayBlue;
+        font-size: 1.75em;
+        margin-bottom: 1em;
+      }
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25em;
+        .card {
+          background-color: $cardBG;
+          padding: 1.75em 2em;
+          border-radius: 0.5em;
+          .top,
+          .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .top {
+            margin-bottom: 1.75em;
+            h3 {
+              color: $textColorGrayBlue;
+              font-size: 1em;
+            }
+          }
+          .bottom {
+            span {
+              color: $textColorDarkBlue;
+              font-weight: 700;
+              font-size: 2.5em;
+            }
+            p {
+              display: flex;
+              align-items: center;
+              gap: 0.25em;
+              font-weight: 700;
+            }
+            .up {
+              color: $limeGreen;
+            }
+            .down {
+              color: $brightRed;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark {
+  background-color: $bgDark;
+  header {
+    background-color: $headerColorDark;
+    .title {
+      border-color: $textColorDesatBlue;
+      h1 {
+        color: $textColorWhite;
+      }
+      p {
+        color: $textColorDesatBlue;
+      }
+    }
+    .input {
+      label {
+        color: $textColorDesatBlue;
+      }
+    }
+  }
+  main {
+    .stats {
+      .card {
+        background-color: $cardBGDark;
+        .top-row {
+          span {
+            color: $textColorDesatBlue;
+          }
+        }
+        > span {
+          color: $textColorWhite;
+        }
+        p {
+          color: $textColorDesatBlue;
+        }
+      }
+    }
+    .overview {
+      h2 {
+        color: $textColorWhite;
+      }
+      .cards {
+        .card {
+          background-color: $cardBGDark;
+          .top h3 {
+            color: $textColorDesatBlue;
+          }
+          .bottom span {
+            color: $textColorWhite;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 376px) {
+  body {
+    header {
+      padding: 2.5em 10% 10em;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .title {
+        border: unset;
+      }
+      .input {
+        padding: unset;
+        gap: 1.5em;
+        #checkbox:hover {
+          cursor: pointer;
+          background: linear-gradient(to right, $toggleDarkColor);
+        }
+      }
+    }
+    main {
+      padding: 0 10% 5em;
+      .stats {
+        margin-top: -7em;
+        flex-direction: row;
+        gap: 2.5em;
+        .card {
+          width: 25%;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .card:hover {
+          background-color: hsl(228, 12%, 90%);
+        }
+      }
+      .overview {
+        .cards {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 2em;
+          .card {
+            width: calc(25% - 1.5em);
+            padding: 1.5em 1.5em 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          .card:hover {
+            background-color: hsl(228, 12%, 90%);
+          }
+        }
+      }
+    }
+  }
+  .dark {
+    main {
+      .stats {
+        .card:hover {
+          background-color: hsl(228, 28%, 30%);
+        }
+      }
+      .overview {
+        .cards {
+          .card:hover {
+            background-color: hsl(228, 28%, 30%);
+          }
+        }
+      }
+    }
+  }
 }
